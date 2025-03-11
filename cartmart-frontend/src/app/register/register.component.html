@@ -1,0 +1,97 @@
+<!-- src/app/register/register.component.html -->
+<div class="register-container">
+  <h2>Register Here....</h2>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        required
+        #firstName="ngModel"
+      />
+      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="error-message">
+        First Name is required.
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="user.lastName"
+        required
+        #lastName="ngModel"
+      />
+      <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="error-message">
+        Last Name is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="user.email"
+        required
+        email
+        #email="ngModel"
+      />
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Please enter a valid email.</div>
+      </div>
+    </div>
+
+    <!-- Mobile Number -->
+    <div class="form-group">
+      <label for="mobileNumber">Mobile Number</label>
+      <input
+        type="text"
+        id="mobileNumber"
+        name="mobileNumber"
+        [(ngModel)]="user.mobileNumber"
+        required
+        pattern="[0-9]{10}"
+        #mobileNumber="ngModel"
+      />
+      <div *ngIf="mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)" class="error-message">
+        <div *ngIf="mobileNumber.errors?.['required']">Mobile Number is required.</div>
+        <div *ngIf="mobileNumber.errors?.['pattern']">Please enter a valid 10-digit mobile number.</div>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="user.password"
+        required
+        minlength="6"
+        #password="ngModel"
+      />
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+        <div *ngIf="password.errors?.['required']">Password is required.</div>
+        <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters.</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-buttons">
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+      <button type="button" (click)="onReset(registerForm)">Reset</button>
+    </div>
+  </form>
+</div>

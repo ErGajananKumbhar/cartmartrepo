@@ -1,0 +1,54 @@
+<!-- src/app/home/home.component.html -->
+<div class="container">
+  <!-- Header -->
+  <header class="header">
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search products..."
+        class="search-input"
+        [(ngModel)]="searchQuery"
+      />
+      <button (click)="searchProducts()">Search</button>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/home" class="nav-link">Home</a>
+      <a routerLink="/login" class="nav-link">Login</a>
+      <a routerLink="/cart" class="nav-link">Cart</a>
+      <a routerLink="/about-us" class="nav-link">About Us</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Left Side Filter -->
+    <aside class="left-side-filter">
+      <h3>Filters</h3>
+      <ul>
+        <li><a href="#">filter by Company</a></li>
+        <li><a href="#">filter by price</a></li>
+        <li><a href="#">filter by size</a></li>
+      </ul>
+    </aside>
+
+    <!-- Product Grid -->
+    <section class="product-grid">
+      @for (product of filteredProducts; track product.id) {
+        <div class="product-card">
+          <img [src]="product.image" alt="{{ product.img }}" class="product-image" />
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-price">{{ product.price | currency }}</p>
+          <p class="product-discount" *ngIf="product.discount">
+            Discount: {{ product.discount }}%
+          </p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      }
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2023 CartMart. All rights reserved.</p>
+  </footer>
+</div>

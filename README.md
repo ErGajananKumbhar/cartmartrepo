@@ -16,7 +16,7 @@ Clone the repository:
 bash
 Copy
 Edit
-git clone https://github.com/yourusername/cartmartrepo.git
+git clone https://github.com/ErGajananKumbhar/cartmartrepo.git
 Set up the backend services in Spring Boot.
 Configure the database (Oracle/MySQL).
 Run the frontend using Angular.

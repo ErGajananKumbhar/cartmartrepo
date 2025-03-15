@@ -25,7 +25,7 @@ export class RegisterComponent {
   // Submit form
   onSubmit() {
     if (this.isFormValid()) {
-      this.http.post('https://your-backend-url.com/register', this.user).subscribe(
+      this.http.post('http://localhost:8095/api/user/register', this.user).subscribe(
         (response) => {
           console.log('Registration successful', response);
           alert('Registration successful!');

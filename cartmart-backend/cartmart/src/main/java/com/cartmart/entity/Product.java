@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "PRODUCT")  // Explicitly mapping to database table
-public class Product {
+public class product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
     @SequenceGenerator(name = "product_seq", sequenceName = "PRODUCT_SEQ", allocationSize = 1)

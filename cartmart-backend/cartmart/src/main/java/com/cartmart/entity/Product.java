@@ -3,7 +3,6 @@ package com.cartmart.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
 @Entity
 @Table(name = "PRODUCT")  // Explicitly mapping to database table
 public class Product {
